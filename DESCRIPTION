@@ -2,7 +2,7 @@ Package: sumoresponser
 Title: Quantifying the Response of Variables to Changes in an Econometric Context
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Vidar", "Ingason", , "vidar@sumoanalytics.ai", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: Sumoresponser provides tools to estimate the impact of changes in one variable on another, with an emphasis on time series data. By integrating methods from econometric modeling (such as VAR and VEC) and machine learning, this package provides robust estimates of such effects. It incorporates tests for stationarity, cointegration, and uses either VAR or VEC models, based on the properties of the data. Furthermore, it also creates impulse response functions (IRFs) and handles adjustments for non-stationarity. In scenarios where the variables are not cointegrated, sumoresponser applies the appropriate differencing before fitting VAR models. The package thus offers a comprehensive solution for tracing and quantifying the impact of changes in predictor variables on the outcome variable, offering valuable insights for decision making in various fields, including economics and finance..
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
@@ -14,3 +14,11 @@ URL: https://github.com/vidarsumo/sumoresponser
 BugReports: https://github.com/vidarsumo/sumoresponser/issues
 Depends: 
     R (>= 2.10)
+Imports: 
+    AzureStor,
+    dplyr,
+    magrittr,
+    tidyr,
+    timetk,
+    urca,
+    vars

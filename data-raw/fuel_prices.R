@@ -1,7 +1,7 @@
 library(tidyverse)
+library(timetk)
 
 Sys.setlocale("LC_CTYPE", "Icelandic_Iceland.utf8")
-#Sys.setlocale("LC_COLLATE", "Icelandic_Iceland.utf8")
 
 bl_endp_key <- AzureStor::storage_endpoint(
   "https://datalakesumotest.blob.core.windows.net",
@@ -19,5 +19,10 @@ fuel_prices <- gasvaktin_tbl %>%
   pivot_wider(names_from = company_id, values_from = bensin) %>%
   set_names("date", "price_1", "price_2")
 
+fuel_prices <- fuel_prices %>%
+  mutate(date = floor_date(date, "month")) %>%
+  group_by(date) %>%
+  summarise(price_1 = sum(price_1, na.rm = TRUE),
+            price_2 = sum(price_2, na.rm = TRUE))
 
 usethis::use_data(fuel_prices, overwrite = TRUE, internal = TRUE)
